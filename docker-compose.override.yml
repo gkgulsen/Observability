@@ -26,7 +26,7 @@ services:
     - ./otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml
   metric.api:
    ports:
-     - 5010:8080
+     - 5011:80
   prometheus:    
    ports:
     - 9090:9090
