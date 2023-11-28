@@ -28,5 +28,46 @@ namespace Observability.MetricAPI.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public IActionResult UpDownCounterMetric()
+        {
+
+            OpenTelemetryMetric.CurrentStockCounter.Add(new Random().Next(-300, 300));
+
+            return Ok();
+
+        }
+
+        [HttpGet]
+        public IActionResult UpDownCounterObservableMetric()
+        {
+
+            Counter.CurrentStockCount += new Random().Next(-300, 300);
+
+            return Ok();
+
+        }
+
+        [HttpGet]
+        public IActionResult GaugeObservableMetric()
+        {
+
+            Counter.KitchenTemp = new Random().Next(-30, 60);
+
+            return Ok();
+
+        }
+
+        [HttpGet]
+        public IActionResult HistogramMetric()
+        {
+
+
+            OpenTelemetryMetric.XMethodDuration.Record(new Random().Next(500, 50000));
+
+            return Ok();
+
+        }
+
     }
 }
