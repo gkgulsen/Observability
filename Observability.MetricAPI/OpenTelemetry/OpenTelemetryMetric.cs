@@ -6,6 +6,9 @@ namespace Observability.MetricAPI.OpenTelemetry
     {
         private static readonly Meter meter = new Meter("metric.meter.api");
 
-        public static Counter<int> OrderCreatedEventCounter=meter.CreateCounter<int>("order.created.event.count");
+        public static Counter<int> OrderCreatedEventCounter = meter.CreateCounter<int>("order.created.event.count");
+
+        public static ObservableCounter<int> OrderCancelledCounter = meter.CreateObservableCounter<int>("order.cancelled.counter",
+            () => new Measurement<int>(Counter.OrderCancelledCounter));
     }
 }

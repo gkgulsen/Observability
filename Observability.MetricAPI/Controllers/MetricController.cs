@@ -19,5 +19,14 @@ namespace Observability.MetricAPI.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public IActionResult CounterObservableMetric()
+        {
+            Counter.OrderCancelledCounter += new Random().Next(1, 100);
+
+
+            return Ok();
+        }
+
     }
 }
