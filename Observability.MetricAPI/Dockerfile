@@ -30,5 +30,5 @@ RUN dotnet publish --no-restore -c Release -o out
 
 FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Observability.MetricAPI.dll"]
